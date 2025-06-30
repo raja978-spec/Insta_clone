@@ -1,0 +1,49 @@
+{% extends 'navbar/navbar.html' %}
+{% load static %}
+
+{% block another_link %}
+<link rel="stylesheet" href="{% static 'home/home.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="post_container">
+    <div class="post_content_container">
+        <div class="post_card_container">
+                <div class="post_heading">
+                    <div class="post_profile_container">
+                        <img src="" class="post_profile" alt="">
+                        <div class="user_name_container">
+                            <div class="user_name">
+                                tamilbuzzdubai
+                            </div>
+                            <i class="fas fa-check-circle" style="color: #0095f6;"></i>
+                            <div class="dot_seperator">.</div>
+                            <div class="date_post">1d</div>
+                            <div class="dot_seperator">.</div>
+                            <div class="follow">
+                                Follow
+                            </div>     
+                        </div>
+                    </div>
+                    <div class="more_post_option_container">
+                        <i class="fas fa-ellipsis-h" style="font-size: 20px; cursor: pointer;"></i>
+
+                    </div>
+                </div>
+                <div class="post_image"></div>
+                <div class="like_message_save_container">
+                </div>
+                <div class="no_of_likes"></div>
+                <div class="post_description">
+                    <div class="see_translation_text"></div>
+                    <div class="view_all_comments_btn"></div>
+                    <div class="add_comments_textbox"></div>
+                </div>
+            
+        </div>
+    </div>
+     <div class="followers_container">
+
+    </div>
+</div>
+{% endblock %}

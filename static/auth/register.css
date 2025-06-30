@@ -1,0 +1,78 @@
+.signup_container {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+align-items: center;
+}
+.signup_logo_container {
+    width: 10rem;
+    height: 4rem;
+}
+.sign_up_with_facebook_button {
+     background-color:  rgba(0, 149, 246);
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    border: 2px white solid;
+    color: aliceblue;
+}
+.signup_form_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgb(227, 224, 224);
+    padding: 0.5rem 0;
+    width: 60%;
+}
+.signup_form_content_container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    gap: 1rem;
+    
+}
+.form_footer_text,.form_footer_text_2 {
+    text-align: center;
+}
+.form_footer_text_1_span, .form_footer_text_2_span {
+    color: rgba(0, 149, 246);
+}
+.input_field {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 2px white solid;
+    background-color: rgb(224, 226, 228);
+    width: 100%;
+}
+
+.sign_up_btn {
+    background-color:  rgba(0, 149, 246);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 2px white solid;
+    width: 100%;
+    color: aliceblue;
+}
+.signup_footer_container {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.signup_link_container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.sign_footer_link {
+    color: rgb(153, 156, 157);
+    text-decoration: none;
+}
+.sign_up_footer_container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}

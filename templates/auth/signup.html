@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}
+Sign up
+{% endblock %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'auth/register.css' %}">
+{% endblock %}
+{% block content %}
+<div class="signup_container">
+    <div class="signup_form_container">
+        <img class="signup_logo_container" 
+        src="{% static 'img/auth_images/logo.png' %}" alt="">
+    <div class="sign_up_heading_text">
+        Sign up to see photos and videos from your friends.
+    </div>
+    <button class="sign_up_with_facebook_button">
+        Log in with Facebook
+    </button>
+    <div style="font-size: 1rem;">OR</div>
+    <form action="" class="signup_form_content_container">
+        <input type="text" name="mobile_no_or_email" 
+        class="input_field" id="" placeholder="Mobile no or Email">
+        <input type="password" name="password"
+        class="input_field" id="" placeholder="Password">
+        <input type="text" name="full_name" id=""
+        class="input_field" placeholder="Full Name">
+        <input type="text" name="user_name" id="" 
+        class="input_field" placeholder="User Name">
+        <div class="form_footer_text">
+        People who use our service may have uploaded your contact information to Instagram. 
+        <span class="form_footer_text_1_span"
+        >Learn More</span>
+    </div>
+    <div class="form_footer_text_2">
+        By signing up, you agree to our 
+        <span class="form_footer_text_2_span">
+        Terms , 
+        Privacy Policy and Cookies Policy.
+       </span>
+    </div>
+        <input type="submit" value="Sign up" class="sign_up_btn">
+    </form>
+    </div>
+    <div class="sign_up_footer_container">
+        <div>Have a account?</div>
+        <a style="color: rgba(0, 149, 246); text-decoration: none;"
+        href="{% url 'login' %}">
+            Login</a>
+    </div>
+    <div class="signup_footer_container">
+    <div class="signup_link_container">
+      {% for link in footer_links %}
+      <a href="{{link}}" class="sign_footer_link">{{link}}</a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

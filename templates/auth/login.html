@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'auth/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login_body_container">
+  <div class="login_container">
+    <img src="{% static 'img/auth_images/instagram-web-lox-image.png' %}" alt="can't load image" class="auth_image">
+    
+    <div class="login_form_container">
+      <img src="{% static 'img/auth_images/logo.png' %}" alt="Logo" class="insta_logo_image">
+      
+      <form action="{% url 'home' %}" method="post" class="form_container">
+        {% csrf_token %}
+        <input type="text" placeholder="Phone number, username, or email"
+        name="phone_no_or_username_or_email" class="input_field">
+        <input type="password" placeholder="Password" 
+        name="password" class="input_field">
+        <input type="submit" class="login_btn" value="Login">
+
+        <p class="or_style">OR</p>
+        <p class="login_with_facebook_text">Login with Facebook</p>
+        <h3 class="forgot_password_text">Forgot password?</h3>
+        <p>Don't have an account? <a href="{% url 'signup' %}" class="sign_up_link">
+          Sign up</a></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="login_footer_container">
+    <div class="link_container">
+      {% for link in footer_links %}
+      <a href="{{link}}" class="login_footer_link">{{link}}</a>
+      {% endfor %}
+    </div>
+  </div>
+</div>      
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Instagram
+{% endblock %}
+
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'navbar/navbar.css' %}">
+{% block another_link %}
+{% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="main_container">
+<div class="nav_container">
+    <img class="nav_logo_container" src="{% static 'img/auth_images/logo.png' %}">
+    </img>
+    <div class="nav_links_container">
+     <a href="{% url 'home'%}"
+     class="nav_link"><i class="fas fa-home"></i>Home</a>
+      <a href="{% url 'home'%}"
+     class="nav_link"><i class="fas fa-search"></i>Search</a>
+      <a href="{% url 'home'%}"
+     class="nav_link"><i class="fas fa-compass"></i>Explore</a>
+      <a href="{% url 'home'%}"
+     class="nav_link"><i class="fas fa-clapperboard"></i>Reels</a>
+      <a href="{% url 'home'%}"
+     class="nav_link"><i class="fas fa-paper-plane"></i>Chat</a>
+      <a href="{% url 'home'%}"
+     class="nav_link"><i class="fas fa-heart"></i>Likes</a>
+       <a href="{% url 'home'%}"
+     class="nav_link"> <i class="fas fa-circle-plus"></i>Create</a>
+    </div>
+    <div class="nav_more_options_container">
+        <span class="hamburger">&#9776;</span>
+        <div>More</div> 
+    </div>
+</div>
+
+{% if is_message_button_required %}
+<div class="message_button_container">
+    <i class="far fa-paper-plane"></i>
+    <a href="{% url 'home' %}" 
+    class="message_button">Message</a>
+</div>
+{% endif %}
+
+{% block body %}
+{% endblock %}
+
+</div>
+{% endblock %}
