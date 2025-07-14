@@ -9,13 +9,22 @@
 
 {% block content %}
 <div class="login_body_container">
+   
   <div class="login_container">
     <img src="{% static 'img/auth_images/instagram-web-lox-image.png' %}" alt="can't load image" class="auth_image">
     
     <div class="login_form_container">
       <img src="{% static 'img/auth_images/logo.png' %}" alt="Logo" class="insta_logo_image">
-      
-      <form action="{% url 'home' %}" method="post" class="form_container">
+    
+{% if messages %}
+  {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <div style="color: rgb(99, 204, 99); text-align: center; font-size: 1rem; font-weight: 500;">{{ message }}</div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+      <form method="post" class="form_container">
         {% csrf_token %}
         <input type="text" placeholder="Phone number, username, or email"
         name="phone_no_or_username_or_email" class="input_field">
@@ -29,6 +38,15 @@
         <p>Don't have an account? <a href="{% url 'signup' %}" class="sign_up_link">
           Sign up</a></p>
       </form>
+      
+{% if messages %}
+  {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      <div style="color: red; font-size: 1rem; font-weight: 500; text-align: center;">{{ message }}</div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
     </div>
   </div>
 

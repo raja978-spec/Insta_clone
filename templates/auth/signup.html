@@ -18,7 +18,8 @@ Sign up
         Log in with Facebook
     </button>
     <div style="font-size: 1rem;">OR</div>
-    <form action="" class="signup_form_content_container">
+    <form method="post" class="signup_form_content_container">
+        {% csrf_token %}
         <input type="text" name="mobile_no_or_email" 
         class="input_field" id="" placeholder="Mobile no or Email">
         <input type="password" name="password"
@@ -39,6 +40,14 @@ Sign up
         Privacy Policy and Cookies Policy.
        </span>
     </div>
+   {% if messages %}
+  {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      <div style="color: red; font-size: 1rem; font-weight: 500;">{{ message }}</div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+   
         <input type="submit" value="Sign up" class="sign_up_btn">
     </form>
     </div>
@@ -46,7 +55,7 @@ Sign up
         <div>Have a account?</div>
         <a style="color: rgba(0, 149, 246); text-decoration: none;"
         href="{% url 'login' %}">
-            Login</a>
+        Login</a>
     </div>
     <div class="signup_footer_container">
     <div class="signup_link_container">

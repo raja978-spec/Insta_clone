@@ -30,13 +30,83 @@ Instagram
      class="nav_link"><i class="fas fa-paper-plane"></i>Chat</a>
       <a href="{% url 'home'%}"
      class="nav_link"><i class="fas fa-heart"></i>Likes</a>
-       <a href="{% url 'home'%}"
-     class="nav_link"> <i class="fas fa-circle-plus"></i>Create</a>
+     <div class="create_post_link_container">
+        <div class="nav_link create_nav_link" id="createBtn">
+        <i class="fas fa-circle-plus"></i> Create
+        </div>
+        <div class="post_create_options" id="createOptions">
+            <div class="post_create_option" style="border-bottom: 1px solid rgb(186, 183, 183);">
+                <div id="openPostModal" style="cursor: pointer;"
+                >Post</div>
+                <i class="fas fa-photo-film"></i>
+            </div>
+            
+            <div  class="post_create_option">
+                <div id="openPostModal" style="cursor: pointer;">AI</div>
+             <i class="fas fa-shapes"></i>
+ 
+            </div>
+            
+        </div>
+        
+     </div>  
+      <a href="{% url 'user_profile'%}"
+     class="profile_nav_link">
+     {% if request.user.is_authenticated and request.user.profile_picture %}
+    <img 
+    class="navbar_user_profile_img"
+    src="{{ request.user.profile_picture.url }}" alt="Profile" width="40" height="40">
+    Profile
+    {% else %}
+    <img 
+    class="navbar_user_profile_img"
+    src="{% static 'user_profile/no_user_img.jpg' %}" alt="Default">
+    Profile
+    {% endif %}
+    </a>
     </div>
-    <div class="nav_more_options_container">
-        <span class="hamburger">&#9776;</span>
-        <div>More</div> 
-    </div>
+    
+    <div class="nav_more_options_container" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">
+         <span class="hamburger">&#9776;</span>
+          <div >More</div>
+          <div class="dropdown-menu dropdown-menu">
+            <div class="dropdown-item" type="button">
+              <div>
+                {% include 'svg/settings/settings-icon.svg' %}
+              </div>
+              Settings
+            </div>
+            <div class="dropdown-item" type="button">
+              <div>
+                {% include 'svg/settings/activity-icon.svg' %}
+              </div>
+              Your activity
+            </div>
+            <div class="dropdown-item" type="button">
+              <div>
+                {% include 'svg/settings/saved-icon.svg' %}
+              </div>
+              Saved
+            </div>
+            <div class="dropdown-item" type="button">
+              <div>
+                {% include 'svg/settings/theme-changer-icon.svg' %}
+              </div>
+              Switch appearance
+            </div>
+            <div class="dropdown-item switch_account_link" type="button">
+              Switch accounts
+            </div>
+            <div class="dropdown-item" onclick="document.getElementById('logoutForm').submit();" style="cursor: pointer;">
+              Log out
+            </div>
+            <form id="logoutForm" method="post" action="{% url 'logout' %}" style="display: none;">
+              {% csrf_token %}
+            </form>
+
+          </div>
+    </div> 
 </div>
 
 {% if is_message_button_required %}
@@ -51,4 +121,7 @@ Instagram
 {% endblock %}
 
 </div>
+{% include 'modal/add_post_modal.html' %}
+
+<script src="{% static 'js/navbar/create_post_link_hover_effect.js' %}"></script>
 {% endblock %}

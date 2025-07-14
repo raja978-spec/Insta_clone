@@ -1,0 +1,154 @@
+.post_modal_container {
+    height: 35rem;
+}
+.post_video_icon {
+    font-size: 7rem;
+}
+.post_modal_title {
+    font-size: 1rem;
+}
+.post_modal_video_logo {
+    font-size: 5rem;
+}
+ .media-icons {
+    position: relative;
+    display: inline-block;
+  }
+
+  .play-icon {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    color: black;
+    background: white;
+    border-radius: 50%;
+    padding: 0.2rem;
+  }
+  .post_model_next_btn {
+    color:#0095f6;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+.second_modal_post_container {
+    width: 50rem;
+    height: 40rem;
+}
+.uploaded_image_container {
+  width: 50%; /* Set the desired width */
+  height: 95%; /* Set the desired height */
+  position: relative;
+  overflow: hidden; /* Hide overflow */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Optional, for rounded corners */
+}
+
+.uploaded_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image fills the container */
+  object-position: center; /* Center the image */
+}
+.post_modal_user_profile_container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.post_description_container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 50%;
+}
+.post_modal_user_profile_img {
+    width: 30px;
+    height: 30px;
+    border-radius: 10rem;
+   
+}
+.post_modal_user_name {
+    width: 10rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.post_description_textarea {
+  border: 1px solid #ccc;  /* Default border */
+  border-radius: 5px;
+  padding: 8px;
+  resize: none; /* Optional: remove resize handle */
+  outline: none; /* Remove the blue/black outer glow */
+  transition: border-color 0.3s;
+  min-height: 10rem !important;
+}
+.post_description_textarea1 {
+    border: 1px solid #ccc;  /* Default border */
+  border-radius: 5px;
+  padding: 8px;
+  resize: none; /* Optional: remove resize handle */
+  outline: none; /* Remove the blue/black outer glow */
+  transition: border-color 0.3s;
+  min-height: 8rem !important;
+}
+.post_description_textarea:focus {
+  border: 1px solid #eeefef; /* Change border color on focus */
+  outline: none;
+}
+
+.post_modal_add_location_input_box_container {
+    border: 1px solid rgb(233, 227, 227);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+.add_location_input_field {
+    border: 1px solid white;
+    height: 100%;
+    width: 100%;
+}
+.post_modal_toogle_btn {
+    height: 50px !important;
+}
+.post_modal_user_profile_container > .input-group > .input-group-text {
+    border: 1px solid white !important;
+}
+.post_modal_user_profile_container > .input-group > .form-control {
+    border: 1px solid white !important;
+}
+.post_modal_user_profile_container > .form-control {
+border: 1px solid white m !important;
+}
+/* Optional Dark Switch Styling */
+.form-check-input:checked {
+  background-color: #000;
+  border-color: #000;
+}
+
+.form-check-input {
+  width: 3rem;
+  height: 1.5rem;
+}
+
+.post_modal_toogle_btn {
+    width: 100px;
+    height: 100px;
+}
+.swith_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.post_description_container > .form-switch {
+padding-left: 0rem;
+}
+.post_description_container > .form-check{
+    padding-left: 0rem;
+}
+
+.post_description_container > .form-switch > .form-check-input{
+    width: 3rem !important;
+}

@@ -1,0 +1,104 @@
+{% extends 'navbar/navbar.html' %}
+{% load static %}
+
+{% block another_link %}
+<link rel="stylesheet" href="{% static 'user_profile_css/user_profile.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="main_user_profile_container">
+    <div class="user_profile_content_container">
+        <div class="user_profile_details_container">
+            <div class="user_profile_details_content_container">
+                    <div class="profile-upload">
+                    <i class="bi bi-camera camera-icon"></i>
+                    <form enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="image" accept="image/*" onchange="previewImage(event)">
+                    {% if user_obj.profile_picture %}
+                    <img id="profileImage" 
+                    src="{{ user_obj.profile_picture.url }}">
+                    {% else %}
+                    <img id="profileImage" style="display:none;" />
+                    {% endif %}
+                    </form>
+                    </div>
+                    <div class="user_profile_description_container">
+                        <div class="user_name_settings_container">
+                            <div class="user_profile_user_name">{{request.user.username }}</div>
+                            <button class="user_profile_edit_profile_btn">
+                            <a href="{% url 'edit_user_profile' request.user.id %}">
+                                 Edit profile
+                            </a>   
+                            </button>
+                            <button class="user_profile_view_archive_btn">View Archive</button>
+                           <i class="fa fa-cog"></i>
+                            
+                        </div>
+                        <div class="user_follower_details_container">
+                            <div class="user_profile_followers-content">2<span style="color: rgb(191, 192, 194);">post</span></div>
+                            <div class="user_profile_followers-content">0<span style="color: rgb(191, 192, 194);">followers</span></div>
+                            <div class="user_profile_followers-content">0<span style="color: rgb(191, 192, 194);">following</span></div>              
+                        </div>
+                    </div>    
+            </div>
+            <div class="user_profile_highlights_container">
+                <div class="circle-icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+        </div>
+        <div class="user_post_content_container">
+         <div class="post_text_container">
+    <div class="tab active" onclick="setActiveTab(event, this)">
+        <a href="{% url 'user_profile_navigation' profile_url=1 %}">
+            POSTS
+        </a>    
+    </div>
+    <div class="tab" onclick="setActiveTab(event, this)">
+        <a href="{% url 'user_profile_navigation' profile_url=2 %}">
+            SAVED
+        </a>
+    </div>
+    <div class="tab" onclick="setActiveTab(event, this)">
+        <a href="{% url 'user_profile_navigation' profile_url=3 %}">
+            TAGGED
+        </a>
+    </div>
+</div>
+
+
+            <div class="post_card_container">
+    
+                {% if no_post_to_show %}
+                <div class="user_profile_no_post_tags_container">
+                    <div class="user_profile_no_post_content_container">
+                        <div class="no_post_circle_icon">
+                          <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <div style="font-weight: 800; font-size: 1.3rem;">Photos of you</div>
+                    <div>When people tag you in photos, they'll appear here.</div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="post_card">
+                <img src="{% static 'sample_user_post_video/image1.jpg' %}" alt="">
+                <i class="fa-regular fa-comment comment_icon"></i>
+            </div>
+            <div class="post_card">
+                <video src="{% static 'sample_user_post_video/video1.mp4' %}" controls></video>
+                <i class="fa-regular fa-comment comment_icon"></i>
+            </div>
+                {% endif %}
+             
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const uploadUrl = "{% url 'upload_image' %}";
+    const csrfToken = "{{ csrf_token }}";
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<script src="{% static 'js/user_profile/image_uploader.js' %}"></script>
+{% endblock %}

@@ -6,44 +6,182 @@
 {% endblock %}
 
 {% block body %}
+<div class="main_home_container">
+<div class="status_container">
+   <div class="status_content_container">
+      <div class="user_profile_status_container">
+      <img src="{% static 'user_profile/user1.jpg' %}" class="user_profile_img" alt="">
+   <p class="user_name">ArunTitusSachinArunTitusSachinArunTitusSachin</p>
+   </div>
+   <div class="user_profile_status_container">
+      <img src="{% static 'user_profile/user2.jpg' %}" class="user_profile_img" alt="">
+   <p class="user_name">ArunTitusSachinArunTitusSachinArunTitusSachin</p>
+   </div>
+   <div class="user_profile_status_container">
+      <img src="{% static 'user_profile/user3.jpg' %}" class="user_profile_img" alt="">
+   <p class="user_name">ArunTitusSachinArunTitusSachinArunTitusSachin</p>
+   </div>
+   </div>
+</div>
 <div class="post_container">
-    <div class="post_content_container">
-        <div class="post_card_container">
-                <div class="post_heading">
-                    <div class="post_profile_container">
-                        <img src="" class="post_profile" alt="">
-                        <div class="user_name_container">
-                            <div class="user_name">
-                                tamilbuzzdubai
-                            </div>
-                            <i class="fas fa-check-circle" style="color: #0095f6;"></i>
-                            <div class="dot_seperator">.</div>
-                            <div class="date_post">1d</div>
-                            <div class="dot_seperator">.</div>
-                            <div class="follow">
-                                Follow
-                            </div>     
-                        </div>
-                    </div>
-                    <div class="more_post_option_container">
-                        <i class="fas fa-ellipsis-h" style="font-size: 20px; cursor: pointer;"></i>
+   <div class="post_content_container">
+      <div class="post_card_container">
+         <div class="post_heading_profile_details">
+            <div class="user_image_and_name">
+               <img class="post_user_profile_img" src="{% static 'user_profile/user1.jpg'%}" alt="">
+               <div class="post_user_name">erodebeasterodebeasterodebeasterodebeast
+               </div>
+               <i class="fas fa-circle-check" style="color:#0095f6; font-size: 13px;"></i>
+               <i class="fas fa-circle" style="font-size:4px; vertical-align:middle;"></i>
+               <div class="post_date">1d</div>
+            </div>
+            <i class="fas fa-ellipsis-h"></i>  
+         </div>
+         <div class="posted_content_container">
+            <video class="posted_content" style="background-color: black"controls autoplay muted loop >
+                <source src="{% static 'sample_user_post_video/video1.mp4' %}" type="video/mp4">
+                <source src="myvideo.webm" type="video/webm">
+                  Your browser does not support the video tag.
+            </video>
+         </div>
+         <div class="post_action_container">
+           <div class="post_action_1">
+            <i class="far fa-heart"></i>  <!-- Regular (outline) heart -->
+            <i class="far fa-comment"></i>  <!-- Regular comment bubble -->
+            <i class="far fa-paper-plane"></i>
+           </div>
+            <div class="post_bookmark_container">
+               <i class="far fa-bookmark"></i>  <!-- Regular (outline) bookmark -->
+            </div>
+         </div>
+         <div class="no_of_likes">30 likes</div>
+         <div class="post_description">
+            saajidhshahil
+Yenna Follow Pannerikeengala @coimbatore_mapla_ 🥰
 
-                    </div>
-                </div>
-                <div class="post_image"></div>
-                <div class="like_message_save_container">
-                </div>
-                <div class="no_of_likes"></div>
-                <div class="post_description">
-                    <div class="see_translation_text"></div>
-                    <div class="view_all_comments_btn"></div>
-                    <div class="add_comments_textbox"></div>
-                </div>
-            
-        </div>
-    </div>
-     <div class="followers_container">
+Saajidh Shahil 😀 #Kongu #brother #bro #review #saajidhshahil #lifestyle #trendingreels #instagram #viralvideos #coimbatore #show #talent #love #explore #interview #cbe #entertainment
+         </div> <span style=" color: rgb(116, 118, 120);">more</span>
+         <span style="color: black; font-weight: 500;">see translation</span>
+         <span style="color: rgb(116, 118, 120);">View all 7 comments</span>
+         <textarea class="add_post_comment" placeholder="Add a comments..."></textarea>
+      </div>
+      <div class="post_card_container">
+         <div class="post_heading_profile_details">
+            <div class="user_image_and_name">
+               <img class="post_user_profile_img" src="{% static 'user_profile/user2.jpg'%}" alt="">
+               <div class="post_user_name">start with sai
+               </div>
+               <i class="fas fa-circle-check" style="color:#0095f6; font-size: 13px;"></i>
+               <i class="fas fa-circle" style="font-size:4px; vertical-align:middle;"></i>
+               <div class="post_date">1d</div>
+            </div>
+            <i class="fas fa-ellipsis-h"></i>  
+         </div>
+         <div class="posted_content_container">
+            <img src="{% static 'sample_user_post_video/image1.jpg'%}"
+       class="posted_content"
+            alt="">
+         </div>
+         <div class="post_action_container">
+           <div class="post_action_1">
+            <i class="far fa-heart"></i>  <!-- Regular (outline) heart -->
+            <i class="far fa-comment"></i>  <!-- Regular comment bubble -->
+            <i class="far fa-paper-plane"></i>
+           </div>
+            <div class="post_bookmark_container">
+               <i class="far fa-bookmark"></i>  <!-- Regular (outline) bookmark -->
+            </div>
+         </div>
+         <div class="no_of_likes">30 likes</div>
+         <div class="post_description">
+            saajidhshahil
+Yenna Follow Pannerikeengala @coimbatore_mapla_ 🥰
 
-    </div>
+Saajidh Shahil 😀 #Kongu #brother #bro #review #saajidhshahil #lifestyle #trendingreels #instagram #viralvideos #coimbatore #show #talent #love #explore #interview #cbe #entertainment
+         </div> <span style=" color: rgb(116, 118, 120);">more</span>
+         <span style="color: black; font-weight: 500;">see translation</span>
+         <span style="color: rgb(116, 118, 120);">View all 7 comments</span>
+         <textarea class="add_post_comment" placeholder="Add a comments..."></textarea>
+      </div>
+          
+   </div>
+   <div class="follower_container">
+     <div class="user_profile_details">
+      <div class="user_profile_details_content_container">
+     {% if request.user.is_authenticated and request.user.profile_picture %}
+      <img
+       class="home_user_details_profile"
+       src="{{ request.user.profile_picture.url }}" alt="Profile" width="40" height="40">
+      {% else %}
+      <img
+      class="home_user_details_profile" 
+      src="{% static 'user_profile/no_user_img.jpg' %}" alt="Default">
+    {% endif %}
+                    
+      <div class="home_user_name">{{request.user.username }}</div>
+      </div>
+      <a href="" class="home_switch_link">Switch</a>           
+     </div>
+     <div class="home_suggest_text_container">
+      <div class="home_suggest_text">
+         Suggested for you
+      </div>
+      <div class="home_suggest_see_all">
+         See All
+      </div>
+     </div>
+     <div class="home_suggestion_followers_container">
+      <div class="suggestion_follower_card_container">
+         <div class="suggestion_follower_content_container">
+         <img src="{% static 'user_profile/suggest_post_img/sp1.jpg' %}"
+            class="suggestion_follower_img"
+            alt="">
+         <div class="home_suggestion_follower_name">theri001
+            <span class="sugggest_for_you_text">suggest for you</span>
+         </div>
+         </div>
+         <a href="" class="home_follow_link">Follow</a>           
+      </div>
+      <div class="suggestion_follower_card_container">
+         <div class="suggestion_follower_content_container">
+         <img src="{% static 'user_profile/suggest_post_img/sp2.jpg' %}"
+            class="suggestion_follower_img"
+            alt="">
+         <div class="home_suggestion_follower_name">instagram
+            <span class="sugggest_for_you_text">suggest for you</span>
+         </div>
+         </div>
+         <a href="" class="home_follow_link">Follow</a>           
+      </div>
+      <div class="suggestion_follower_card_container">
+         <div class="suggestion_follower_content_container">
+         <img src="{% static 'user_profile/suggest_post_img/sp3.jpg' %}"
+            class="suggestion_follower_img"
+            alt="">
+         <div class="home_suggestion_follower_name">lovely_my
+            <span class="sugggest_for_you_text">suggest for you</span>
+         </div>
+         </div>
+         <a href="" class="home_follow_link">Follow</a>           
+      </div>
+     </div>
+      <div class="suggestion_footer_container">
+         <div class="suggestion_links_container">
+           <a href="">About</a>
+           <a href="">Help</a>
+           <a href="">Press</a>
+           <a href="">API</a>
+           <a href="">Jobs</a>
+           <a href="">Privacy</a>
+           <a href="">Terms</a> 
+           <a href="">Locations</a> 
+           <a href="">Language</a> 
+         </div>
+         <div class="instagram_year_container">
+            © 2025 Instagram from Meta
+         </div>
+      </div>
+   </div>
+</div>
 </div>
 {% endblock %}
