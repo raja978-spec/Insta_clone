@@ -5,11 +5,9 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-
-from django.views.decorators.csrf import csrf_exempt
+from .models import UserPost
 
 User = get_user_model()
 
@@ -79,7 +77,7 @@ def register(request):
 def home(request):
     return render(request,'home.html',{'is_message_button_required':True})
 
-@login_required
+@login_required(login_url='login')
 def user_profile(request, profile_url=None):
     is_not_post = False
     if profile_url:
@@ -88,7 +86,8 @@ def user_profile(request, profile_url=None):
     print('++',request.user.profile_picture)
     return render(request, 'user_profile.html', {
         'no_post_to_show': is_not_post,
-        'user_obj': request.user 
+        'user_obj': request.user,
+        'user_post':request.user.posts.all()
     })
 
 
@@ -134,3 +133,22 @@ def upload_image(request):
         return JsonResponse({'status': 'success', 'url': image_url})
     
     return JsonResponse({'status': 'error'}, status=400)
+
+@login_required(login_url='login')
+def upload_post(request):
+    if request.method == 'POST':
+       
+        user_id = request.user
+        user_post_obj = UserPost()
+        print('++',user_id)
+        user_post_obj.user = user_id
+        user_post_obj.post_img = request.FILES.get('post_img')
+        user_post_obj.description =  request.POST.get('description')
+        user_post_obj.hastags = request.POST.get('hashtags')
+        user_post_obj.location = request.POST.get('location')
+        user_post_obj.collaborators = request.POST.get('collaborator')
+        user_post_obj.is_view_count_likes_hide = request.POST.get('view_count_hide') == 'on'
+        user_post_obj.is_comment_section_off = request.POST.get('comment_off') == 'on'
+
+        user_post_obj.save()
+        return redirect('user_profile')

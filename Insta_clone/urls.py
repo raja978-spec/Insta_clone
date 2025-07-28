@@ -29,7 +29,8 @@ urlpatterns = [
     path('user_profile',user_profile,name='user_profile'),
    path('user_profile_navigation/<int:profile_url>/', user_profile, name='user_profile_navigation'),
     path('edit_user_profile/<int:user_id>/',edit_user_profile, name='edit_user_profile'),
-     path('upload', upload_image, name='upload_image')
+     path('upload', upload_image, name='upload_image'),
+     path('upload_post',upload_post,name='upload_post')
    
 ]
 if settings.DEBUG:

@@ -1,85 +1,95 @@
-
 {% load static %}
 <link rel="stylesheet" href="{% static 'modal_custom_css/post_modal.css' %}">
-<div class="modal fade " id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true">
+
+<!-- First Modal (Select Image/Video) -->
+<div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content post_modal_container">
-
       <div class="modal-header">
         <h5 class="modal-title w-100 text-center post_modal_title" id="createPostModalLabel">Create new post</h5> 
         <h6 class="post_model_next_btn text-end" style="cursor: pointer;" onclick="openSecondModal()">
-  Next
-</h6>
+          Next
+        </h6>
       </div>
-
-      <div class="modal-body d-flex align-items-center justify-content-center ">
+      <div class="modal-body d-flex align-items-center justify-content-center">
         <div class="d-flex align-items-center flex-column gap-3">
-            <i class="fas fa-photo-film post_video_icon"></i>
-            <form  id="imageForm">
-                <input type="file" id="imageInput" style="display: none;" />
-            </form>
-            <p>Drag photos and videos here</p>
-            <button class="btn btn-primary" onclick="openFile()">Select from computer</button>
-            <p id="fileNameDisplay"></p>
+          <i class="fas fa-photo-film post_video_icon"></i>
+
+          <!-- Hidden file input form -->
+          <input type="file" id="imageInput" accept="image/*" class="d-none">
+
+          <p>Drag photos and videos here</p>
+          <button class="btn btn-primary" onclick="openFile()">Select from computer</button>
+          <p id="fileNameDisplay"></p>
         </div>           
       </div>
     </div>
   </div>
 </div>
 
-<!-- Second Modal -->
-<div class="modal fade" id="secondModal" tabindex="-1" aria-labelledby="secondModalLabel" aria-hidden="true">
+<!-- Second Modal (Post Form) -->
+<form method="post" enctype="multipart/form-data" action="{% url 'upload_post' %}" class="modal fade" id="secondModal" tabindex="-1" aria-labelledby="secondModalLabel" aria-hidden="true">
+  {% csrf_token %}
   <div class="modal-dialog">
     <div class="modal-content second_modal_post_container">
       <div class="modal-header">
         <h5 class="modal-title post_modal_title w-100 text-center" id="secondModalLabel">Create new post</h5>
-        <h6 class="post_model_next_btn text-end" data-bs-target="#secondModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-            Share</h6>
+        <button type="submit" class="post_model_next_btn text-end btn">
+          <h6>Share</h6>
+        </button>
       </div>
+
       <div class="modal-body d-flex flex-row gap-3">
-        <div class="uploaded_image_container">
-            <img id="imagePreview" class="img-fluid d-none uploaded_image"  src="" alt="">
+        <!-- Hidden file input to carry over from first modal -->
+        <input type="file" name="post_img" id="postImageInput" accept="image/*" class="form-control d-none">
+
+        <!-- Image preview -->
+        <div class="uploaded_image_container" onclick="openFile()">
+          <img id="imagePreview" class="img-fluid d-none uploaded_image" src="" alt="Click to select image">
         </div>
+
         <div class="post_description_container">
-            <div class="post_modal_user_profile_container">
-              <img class="post_modal_user_profile_img" src="{% static 'user_profile/no_user_img.jpg'%}" alt="">
-              <div class="post_modal_user_name">selvam00001</div>
-            </div>
-            <textarea class="form-control post_description_textarea" 
-            id="exampleTextarea" rows="7" placeholder="Type post description..."></textarea>
-            <textarea class="form-control post_description_textarea1" 
-            id="exampleTextarea" rows="5" placeholder="Type hashtags"></textarea>
-           <div class="input-group">
-              <input type="text" class="form-control" placeholder="Add Location">
-              <span class="input-group-text">
-                <i class="fas fa-location-dot post_modal_location_icon"></i>  
-              </span>
-            </div>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Add Collaborator">
-              <span class="input-group-text">
-                <i class="fas fa-people-arrows"></i> 
-              </span>
-            </div>
-            <!-- HTML -->
-          <div class="form-check form-switch swith_container">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Hide like and view counts on this post</label>
-            <input class="form-check-input" 
-            type="checkbox" id="flexSwitchCheckDefault">
+          <div class="post_modal_user_profile_container">
+            <img class="post_modal_user_profile_img" src="{{ request.user.profile_picture.url }}" alt="">
+            <div class="post_modal_user_name">{{ request.user.username }}</div>
           </div>
-          <div class="form-check form-switch swith_container">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Turn off commenting</label>
-            <input class="form-check-input" 
-            type="checkbox" id="flexSwitchCheckDefault">
+
+          <textarea class="form-control post_description_textarea" name="description" rows="7" placeholder="Type post description..."></textarea>
+
+          <textarea class="form-control post_description_textarea1" name="hashtags" rows="5" placeholder="Type hashtags"></textarea>
+
+          <div class="input-group">
+            <input type="text" name="location" class="form-control" placeholder="Add Location">
+            <span class="input-group-text">
+              <i class="fas fa-location-dot post_modal_location_icon"></i>
+            </span>
           </div>
+
+          <div class="input-group">
+            <input type="text" name="collaborator" class="form-control" placeholder="Add Collaborator">
+            <span class="input-group-text">
+              <i class="fas fa-people-arrows"></i>
+            </span>
+          </div>
+
           <div class="form-check form-switch swith_container">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Automatically share to Threads</label>
-            <input class="form-check-input" 
-            type="checkbox" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="viewCountSwitch">Hide like and view counts on this post</label>
+            <input class="form-check-input" name="view_count_hide" type="checkbox" id="viewCountSwitch">
+          </div>
+
+          <div class="form-check form-switch swith_container">
+            <label class="form-check-label" for="commentSwitch">Turn off commenting</label>
+            <input class="form-check-input" name="comment_off" type="checkbox" id="commentSwitch">
+          </div>
+
+          <div class="form-check form-switch swith_container">
+            <label class="form-check-label" for="threadsSwitch">Automatically share to Threads</label>
+            <input class="form-check-input" type="checkbox" id="threadsSwitch">
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</form>
+
 <script src="{% static 'js/modal/post_upload_btn_function.js' %}"></script>

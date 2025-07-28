@@ -69,7 +69,6 @@
 
 
             <div class="post_card_container">
-    
                 {% if no_post_to_show %}
                 <div class="user_profile_no_post_tags_container">
                     <div class="user_profile_no_post_content_container">
@@ -89,6 +88,22 @@
                 <video src="{% static 'sample_user_post_video/video1.mp4' %}" controls></video>
                 <i class="fa-regular fa-comment comment_icon"></i>
             </div>
+            {% for i in user_post %}
+            <div class="post_card">
+                {% if i.post_img %}
+                {% if ".mp4" in i.post_img.url or ".webm" in i.post_img.url %}
+                    <video class="post_video" controls>
+                    <source src="{{ i.post_img.url }}" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                {% else %}
+                    <img class="post_image" src="{{ i.post_img.url }}" alt="Post image">
+                {% endif %}
+                {% endif %}
+                <i class="fa-regular fa-comment comment_icon"></i>
+            </div>
+            {% endfor %}
+
                 {% endif %}
              
             </div>

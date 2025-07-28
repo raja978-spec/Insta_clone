@@ -54,7 +54,11 @@
     gap: 0.5rem;
     align-items: center;
 }
+.btn {
+  background-color:white;
+  color: #0095f6;
 
+}
 .post_description_container {
     width: 50%;
     display: flex;
